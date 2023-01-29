@@ -66,3 +66,18 @@ exports.GetAllBillingList = async (req, res) => {
     result: data,
   });
 };
+
+exports.deleteBillingData = async (req, res) => {
+  try {
+    const data = await BillingModel.findById(req.params.id);
+    const result = await data.remove();
+    return res.status(200).json({
+      message: "Successfully deleted the bill!",
+      result: result,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Something went wrong!",
+    });
+  }
+};
