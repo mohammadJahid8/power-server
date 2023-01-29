@@ -2,10 +2,10 @@
   "name": "power-hack-server",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "powerHack-server.js",
   "scripts": {
-    "start": "node index.js",
-    "start-dev": "nodemon index.js",
+    "start": "node powerHack-server.js",
+    "start-dev": "nodemon powerHack-server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -15,6 +15,7 @@
     "axios": "^1.2.6",
     "bcrypt": "^5.1.0",
     "body-parser": "^1.20.1",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
     "dotenv": "^16.0.3",
     "express": "^4.18.2",
