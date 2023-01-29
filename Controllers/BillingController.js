@@ -81,3 +81,26 @@ exports.deleteBillingData = async (req, res) => {
     });
   }
 };
+
+exports.getBillingDataWithPagination = async (req, res) => {
+  try {
+    const page = parseInt(req.query.page) || 1;
+    const limit = 10;
+    const startIndex = (page - 1) * limit;
+    const endIndex = page * limit;
+    const data = await BillingModel.find({});
+    const results = data.slice(startIndex, endIndex);
+    const totalDocuments = await BillingModel.countDocuments({});
+    const totalPages = Math.ceil(totalDocuments / limit);
+
+    return res.status(200).json({
+      message: "Success",
+      result: results,
+      totalPages: totalPages,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Something went wrong!",
+    });
+  }
+};
