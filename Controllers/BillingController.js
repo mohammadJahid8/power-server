@@ -1,12 +1,14 @@
 const BillingModel = require("../models/BillingModel");
 const axios = require("axios");
 
-const generateBillId = () => {
+const generateBillId = (counter = 0) => {
+  if (counter > 100) return -1;
+
   const otp = Math.floor(Math.random() * 10000);
   if (otp.toString().length === 4) {
     return otp;
   } else {
-    return generateBillId();
+    return generateBillId(counter + 1);
   }
 };
 
@@ -29,6 +31,30 @@ exports.addNewbilling = async (req, res) => {
     console.log(error);
     return res.status(500).json({
       message: "Something went wrong!",
+    });
+  }
+};
+
+exports.updateBillingData = async (req, res) => {
+  try {
+    const data = await BillingModel.findById(req.params.id);
+
+    const result = await data.updateOne({
+      $set: {
+        name: req.body.name,
+        email: req.body.email,
+        phone: req.body.phone,
+        paidAmount: req.body.paidAmount,
+      },
+    });
+
+    return res.status(200).json({
+      message: "Updated billing data!",
+      result: result,
+    });
+  } catch (error) {
+    return res.status(500).json({
+      message: "Something went wrong while updating!",
     });
   }
 };
