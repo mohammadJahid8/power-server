@@ -58,3 +58,11 @@ exports.updateBillingData = async (req, res) => {
     });
   }
 };
+
+exports.GetAllBillingList = async (req, res) => {
+  const data = await BillingModel.find({});
+  return res.status(200).json({
+    message: "Success",
+    result: data,
+  });
+};
