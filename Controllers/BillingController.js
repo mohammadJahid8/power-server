@@ -60,11 +60,10 @@ exports.updateBillingData = async (req, res) => {
 };
 
 exports.GetAllBillingList = async (req, res) => {
-  const data = await BillingModel.find({});
-  const reverseData = data.reverse();
+  const data = await BillingModel.find({}).sort({ createdAt: -1 });
   return res.status(200).json({
     message: "Success",
-    result: reverseData,
+    result: data,
   });
 };
 
@@ -87,17 +86,17 @@ exports.getBillingDataWithPagination = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
     const limit = 10;
-    const startIndex = (page - 1) * limit;
-    const endIndex = page * limit;
-    const data = await BillingModel.find({});
-    const results = data.slice(startIndex, endIndex);
-    const reverseData = results.reverse();
+    const skip = (page - 1) * limit;
+    const data = await BillingModel.find({})
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit);
     const totalDocuments = await BillingModel.countDocuments({});
     const totalPages = Math.ceil(totalDocuments / limit);
 
     return res.status(200).json({
       message: "Success",
-      result: reverseData,
+      result: data,
       totalPages: totalPages,
     });
   } catch (error) {
