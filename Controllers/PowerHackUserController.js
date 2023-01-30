@@ -1,4 +1,4 @@
-const PowerHackUser = require("../models/PowerHackUserModel");
+const PowerHackUser = require("../Models/PowerHackUserModel");
 
 const jwt = require("jsonwebtoken");
 const axios = require("axios");

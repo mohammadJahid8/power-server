@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-const PowerHackUser = require("../models/PowerHackUserModel");
+const PowerHackUser = require("../Models/PowerHackUserModel");
 
 //authentication middleware
 const UserMiddleware = async (req, res, next) => {

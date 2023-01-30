@@ -1,4 +1,4 @@
-const BillingModel = require("../models/BillingModel");
+const BillingModel = require("../Models/BillingModel");
 const axios = require("axios");
 
 const generateBillId = (counter = 0) => {
