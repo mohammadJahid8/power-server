@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use(express.urlencoded({ extended: true }));
 
-global.__basedir = "public/"; // set base directory
+// global.__basedir = "public/"; // set base directory
 
 mongoose.set("strictQuery", false);
 
