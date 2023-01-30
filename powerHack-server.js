@@ -33,9 +33,9 @@ mongoose
     console.log("Connection failed!", error);
   });
 
-app.use("/api", require("./routes/PowerHackUserRoutes"));
+app.use("/api", require("./Routes/PowerHackUserRoutes"));
 
-app.use("/api", require("./routes/BillingRoute"));
+app.use("/api", require("./Routes/BillingRoute"));
 
 app.get("/", (req, res) => {
   res.send("Power hack Server Running...");
