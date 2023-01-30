@@ -61,9 +61,10 @@ exports.updateBillingData = async (req, res) => {
 
 exports.GetAllBillingList = async (req, res) => {
   const data = await BillingModel.find({});
+  const reverseData = data.reverse();
   return res.status(200).json({
     message: "Success",
-    result: data,
+    result: reverseData,
   });
 };
 
@@ -90,12 +91,13 @@ exports.getBillingDataWithPagination = async (req, res) => {
     const endIndex = page * limit;
     const data = await BillingModel.find({});
     const results = data.slice(startIndex, endIndex);
+    const reverseData = results.reverse();
     const totalDocuments = await BillingModel.countDocuments({});
     const totalPages = Math.ceil(totalDocuments / limit);
 
     return res.status(200).json({
       message: "Success",
-      result: results,
+      result: reverseData,
       totalPages: totalPages,
     });
   } catch (error) {

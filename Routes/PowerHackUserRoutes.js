@@ -13,7 +13,6 @@ const auth = require("../MiddleWare/PowerHackUserMiddleWare");
 
 router.post("/registration", registration);
 router.post("/login", login);
-
 router.get("/all-users", GetAllData);
 router.delete("/user/:id", deleteById);
 router.get("/current-user", auth, currentUserGet);
