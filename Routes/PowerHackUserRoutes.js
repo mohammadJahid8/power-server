@@ -7,7 +7,7 @@ const {
   registration,
 
   login,
-} = require("../controllers/PowerHackUserController");
+} = require("../Controllers/PowerHackUserController");
 
 const auth = require("../MiddleWare/PowerHackUserMiddleWare");
 

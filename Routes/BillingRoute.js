@@ -6,7 +6,7 @@ const {
   GetAllBillingList,
   deleteBillingData,
   getBillingDataWithPagination,
-} = require("../controllers/BillingController");
+} = require("../Controllers/BillingController");
 
 router.post("/add-billing", addNewbilling);
 router.put("/update-billing/:id", updateBillingData);
